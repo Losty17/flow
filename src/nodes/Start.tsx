@@ -1,20 +1,22 @@
 import React, { CSSProperties, useCallback } from "react";
 import { Handle, Position } from "react-flow-renderer";
 
-interface TaskProps {
+interface StartProps {
   data: Node;
 }
 
-const Task: React.FC<TaskProps> = ({ data }) => {
+const Start: React.FC<StartProps> = ({ data }) => {
   const shape: CSSProperties = {
-    width: "50px",
-    height: "30px",
-    background: "#F2F4FF",
-    border: "1px solid #217BA6",
-    borderRadius: "5px",
+    width: "20px",
+    height: "20px",
+    background: "#88dd88",
+    border: "2px solid #449944",
+    borderRadius: "50%",
   };
 
   const handleStyle: CSSProperties = {
+    width: "5px",
+    height: "5px",
     background: "rgba(0, 0, 0, 0)",
     border: "1px solid rgba(100, 100, 100, 0.5)",
   };
@@ -49,4 +51,4 @@ const Task: React.FC<TaskProps> = ({ data }) => {
   );
 };
 
-export default Task;
+export default Start;

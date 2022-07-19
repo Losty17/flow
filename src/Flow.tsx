@@ -10,12 +10,23 @@ import ReactFlow, {
   useEdgesState,
   useNodesState,
 } from "react-flow-renderer";
+import Pool from "./nodes/Pool";
+import Start from "./nodes/Start";
 import Task from "./nodes/Task";
 
 const initialNodes = [
   {
+    id: "3",
+    type: "pool",
+    data: {
+      // label: "Output Node"
+    },
+    position: { x: 250, y: 250 },
+  },
+  {
     id: "1",
-    type: "task",
+    type: "start",
+    parentNode: "3",
     data: {
       // label: "Input Node",
     },
@@ -30,14 +41,6 @@ const initialNodes = [
     },
     position: { x: 100, y: 125 },
   },
-  {
-    id: "3",
-    type: "task",
-    data: {
-      // label: "Output Node"
-    },
-    position: { x: 250, y: 250 },
-  },
 ];
 
 const initialEdges: Edge[] = [
@@ -47,7 +50,10 @@ const initialEdges: Edge[] = [
 function Flow() {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
-  const customNodes = useMemo(() => ({ task: Task }), []);
+  const customNodes = useMemo(
+    () => ({ task: Task, start: Start, pool: Pool }),
+    []
+  );
 
   const onConnect = useCallback(
     (connection: any) =>
@@ -73,7 +79,6 @@ function Flow() {
       edges.map((e) => {
         e.style = {
           ...e.style,
-          margin: "3px",
           stroke: e.selected ? "#f00" : "#000",
         };
 
@@ -85,9 +90,6 @@ function Flow() {
       nodes.map((n) => {
         n.style = {
           ...n.style,
-          // padding: "5px",
-          // border: n.selected ? "1px dashed black" : "none",
-          margin: "3px",
           outline: n.selected ? "black dashed 1px" : "none",
           outlineOffset: "6px",
         };
