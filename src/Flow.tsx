@@ -73,6 +73,7 @@ function Flow() {
       edges.map((e) => {
         e.style = {
           ...e.style,
+          margin: "3px",
           stroke: e.selected ? "#f00" : "#000",
         };
 
@@ -84,8 +85,11 @@ function Flow() {
       nodes.map((n) => {
         n.style = {
           ...n.style,
-          padding: "5px",
-          border: n.selected ? "1px dashed black" : "none",
+          // padding: "5px",
+          // border: n.selected ? "1px dashed black" : "none",
+          margin: "3px",
+          outline: n.selected ? "black dashed 1px" : "none",
+          outlineOffset: "6px",
         };
 
         return n;
