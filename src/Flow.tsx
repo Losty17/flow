@@ -15,42 +15,9 @@ import Pool from "./nodes/Pool";
 import Start from "./nodes/Start";
 import Task from "./nodes/Task";
 
-const initialNodes = [
-  {
-    id: "3",
-    type: "pool",
-    data: {
-      label: "Pool",
-    },
-    position: { x: 250, y: 250 },
-  },
-  {
-    id: "1",
-    type: "start",
-    parentNode: "3",
-    data: {
-      label: "Input Node",
-    },
-    position: { x: 250, y: 25 },
-  },
-
-  {
-    id: "2",
-    type: "task",
-    data: {
-      label: "Default Node",
-    },
-    position: { x: 100, y: 125 },
-  },
-];
-
-const initialEdges: Edge[] = [
-  // { id: "e2-3", source: "2", type: "smoothstep", target: "3" }, //, animated: true },
-];
-
 function Flow() {
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
-  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+  const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const customNodes = useMemo(
     () => ({ task: Task, start: Start, pool: Pool }),
     []
