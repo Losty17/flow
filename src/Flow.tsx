@@ -6,8 +6,10 @@ import ReactFlow, {
   ConnectionMode,
   Controls,
   Edge,
+  MiniMap,
   OnSelectionChangeParams,
   useEdgesState,
+  useKeyPress,
   useNodesState,
 } from "react-flow-renderer";
 import NodeMenu from "./menus/NodeMenu";
@@ -22,6 +24,8 @@ function Flow() {
     () => ({ task: Task, start: Start, pool: Pool }),
     []
   );
+
+  const deleteKey = useKeyPress("Delete");
 
   const onConnect = useCallback(
     (connection: any) =>
@@ -59,7 +63,7 @@ function Flow() {
         n.style = {
           ...n.style,
           outline: n.selected ? "black dashed 1px" : "none",
-          outlineOffset: "6px",
+          outlineOffset: "5px",
         };
 
         return n;
@@ -89,12 +93,17 @@ function Flow() {
       connectionMode={ConnectionMode.Loose}
       nodeTypes={customNodes}
       onSelectionChange={onSelect}
-      // snapToGrid
       fitView
+      onlyRenderVisibleElements
+      maxZoom={4}
+      deleteKeyCode="Delete"
+      snapGrid={[16, 16]}
+      snapToGrid
     >
       <NodeMenu setNodes={setNodes} />
+      <MiniMap nodeStrokeWidth={3} />
       <Controls />
-      <Background variant={BackgroundVariant.Lines} color="#dfdfdf" gap={14} />
+      <Background variant={BackgroundVariant.Lines} color="#dfdfdf" gap={16} />
     </ReactFlow>
   );
 }

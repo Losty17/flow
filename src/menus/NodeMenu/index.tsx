@@ -36,7 +36,7 @@ const NodeMenu: React.FC<NodeMenuProps> = ({ setNodes }) => {
           data: {
             label: item.key,
           },
-          position: { x: 250, y: 250 },
+          position: { x: 0, y: 0 },
         })
       );
     }

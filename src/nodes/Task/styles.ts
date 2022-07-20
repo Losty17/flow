@@ -1,8 +1,8 @@
 import { CSSProperties } from "react";
 
 export const shape: CSSProperties = {
-  width: "50px",
-  height: "30px",
+  width: "60px",
+  height: "36px",
   background: "#F2F4FF",
   border: "1px solid #217BA6",
   borderRadius: "5px",
