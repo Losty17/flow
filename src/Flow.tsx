@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 import ReactFlow, {
   addEdge,
   Background,
@@ -10,6 +10,7 @@ import ReactFlow, {
   useEdgesState,
   useNodesState,
 } from "react-flow-renderer";
+import NodeMenu from "./menus/NodeMenu";
 import Pool from "./nodes/Pool";
 import Start from "./nodes/Start";
 import Task from "./nodes/Task";
@@ -19,7 +20,7 @@ const initialNodes = [
     id: "3",
     type: "pool",
     data: {
-      // label: "Output Node"
+      label: "Pool",
     },
     position: { x: 250, y: 250 },
   },
@@ -28,7 +29,7 @@ const initialNodes = [
     type: "start",
     parentNode: "3",
     data: {
-      // label: "Input Node",
+      label: "Input Node",
     },
     position: { x: 250, y: 25 },
   },
@@ -37,7 +38,7 @@ const initialNodes = [
     id: "2",
     type: "task",
     data: {
-      // label: <div>Default Node</div>,
+      label: "Default Node",
     },
     position: { x: 100, y: 125 },
   },
@@ -48,7 +49,7 @@ const initialEdges: Edge[] = [
 ];
 
 function Flow() {
-  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
+  const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const customNodes = useMemo(
     () => ({ task: Task, start: Start, pool: Pool }),
@@ -99,6 +100,18 @@ function Flow() {
     );
   };
 
+  useEffect(() => {
+    setNodes(nodes);
+  }, [nodes, setNodes]);
+
+  useEffect(() => {
+    // document.addEventListener("contextmenu", (e) => e.preventDefault());
+
+    return () => {
+      document.removeEventListener("contextmenu", (e) => e.preventDefault());
+    };
+  }, []);
+
   return (
     <ReactFlow
       nodes={nodes}
@@ -112,6 +125,7 @@ function Flow() {
       // snapToGrid
       fitView
     >
+      <NodeMenu setNodes={setNodes} />
       <Controls />
       <Background variant={BackgroundVariant.Lines} color="#dfdfdf" gap={14} />
     </ReactFlow>

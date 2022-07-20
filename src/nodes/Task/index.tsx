@@ -1,23 +1,12 @@
 import React, { CSSProperties, useCallback } from "react";
 import { Handle, Position } from "react-flow-renderer";
+import { handleStyle, shape } from "./styles";
 
 interface TaskProps {
   data: Node;
 }
 
 const Task: React.FC<TaskProps> = ({ data }) => {
-  const shape: CSSProperties = {
-    width: "50px",
-    height: "30px",
-    background: "#F2F4FF",
-    border: "1px solid #217BA6",
-    borderRadius: "5px",
-  };
-
-  const handleStyle: CSSProperties = {
-    background: "rgba(0, 0, 0, 0)",
-    border: "1px solid rgba(100, 100, 100, 0.5)",
-  };
   return (
     <>
       <Handle
@@ -50,3 +39,4 @@ const Task: React.FC<TaskProps> = ({ data }) => {
 };
 
 export default Task;
+export { shape, handleStyle };

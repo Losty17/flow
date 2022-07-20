@@ -1,25 +1,12 @@
 import React, { CSSProperties, useCallback } from "react";
 import { Handle, Position } from "react-flow-renderer";
+import { handleStyle, shape } from "./styles";
 
 interface StartProps {
   data: Node;
 }
 
 const Start: React.FC<StartProps> = ({ data }) => {
-  const shape: CSSProperties = {
-    width: "20px",
-    height: "20px",
-    background: "#88dd88",
-    border: "2px solid #449944",
-    borderRadius: "50%",
-  };
-
-  const handleStyle: CSSProperties = {
-    width: "5px",
-    height: "5px",
-    background: "rgba(0, 0, 0, 0)",
-    border: "1px solid rgba(100, 100, 100, 0.5)",
-  };
   return (
     <>
       <Handle
@@ -52,3 +39,4 @@ const Start: React.FC<StartProps> = ({ data }) => {
 };
 
 export default Start;
+export { shape, handleStyle };

@@ -1,0 +1,21 @@
+#start {
+    border-radius: 6px 6px 0 0;
+}
+
+.menu-item {
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    border: none;
+    transition: .1s;
+}
+
+.menu-item:hover {
+    background: #ddd;
+}
+
+.menu-item:active {
+    background: #aaa;
+}
