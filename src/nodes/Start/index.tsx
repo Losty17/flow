@@ -1,4 +1,4 @@
-import React, { CSSProperties, useCallback } from "react";
+import React from "react";
 import { Handle, Position } from "react-flow-renderer";
 import { handleStyle, shape } from "./styles";
 
@@ -40,3 +40,4 @@ const Start: React.FC<StartProps> = ({ data }) => {
 
 export default Start;
 export { shape, handleStyle };
+

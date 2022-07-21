@@ -1,10 +1,10 @@
-import { MouseEvent, useState } from "react";
+import { MouseEvent } from "react";
+import { Node } from "react-flow-renderer";
+import { v4 } from "uuid";
 import { Start, Task } from "../../nodes";
 import { shape as startShape } from "../../nodes/Start";
 import { shape as taskShape } from "../../nodes/Task";
-import { menuStyle, itemStyle } from "./styles";
-import { Node } from "react-flow-renderer";
-import { v4 } from "uuid";
+import { menuStyle } from "./styles";
 import "./styles.css";
 
 const items = [

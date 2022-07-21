@@ -1,6 +1,5 @@
-import React, { CSSProperties, useCallback } from "react";
-import { shape, labelShape, labelStyle } from "./styles";
-import { Handle, Position } from "react-flow-renderer";
+import React from "react";
+import { labelShape, labelStyle, shape } from "./styles";
 
 interface PoolProps {
   data: {
