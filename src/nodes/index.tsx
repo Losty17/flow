@@ -1,5 +1,3 @@
-import Pool from "./Pool";
-import Start from "./Start";
-import Task from "./Task";
+import { Start, Task } from "./BPMN";
 
-export { Task, Start, Pool };
+export { Task, Start };

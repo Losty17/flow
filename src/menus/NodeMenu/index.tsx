@@ -2,8 +2,8 @@ import { MouseEvent } from "react";
 import { Node } from "react-flow-renderer";
 import { v4 } from "uuid";
 import { Start, Task } from "../../nodes";
-import { shape as startShape } from "../../nodes/Start";
-import { shape as taskShape } from "../../nodes/Task";
+import { shape as startShape } from "../../nodes/BPMN/Start";
+import { shape as taskShape } from "../../nodes/BPMN/Task";
 import { menuStyle } from "./styles";
 import "./styles.css";
 
